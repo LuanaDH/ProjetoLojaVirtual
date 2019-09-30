@@ -1,5 +1,6 @@
 <?php
 $nomeSistema= "Computadores";
+$usuario= ["nome"=>"Luana"];
 ?>
 
 <!DOCTYPE html>
@@ -19,15 +20,25 @@ $nomeSistema= "Computadores";
 
         <nav>
             <ul class="nav">
+
+            <?php if (isset($usuario) && $usuario!= []) { ?> <!--negação colocar a ! na frente do isset, o que temos tem de retornar True -->
                 <li class= "nav-item">
                     <a class="nav-link" href="#">Curso</a>
                 </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">Olá <?php echo $usuario['nome'] ?> </a>
+                </li>
+
+            <?php }else { ?>
+                
                 <li class= "nav-item">
                     <a class="nav-link" href="#">Log In</a>
                 </li>
                 <li class= "nav-item">
                     <a class="nav-link" href="#">Cadastrar</a>
                 </li>
+            <?php } ?>
+
             </ul>
         </nav>
     </header>

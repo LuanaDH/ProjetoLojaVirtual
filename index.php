@@ -1,6 +1,12 @@
 <?php
-$nomeSistema= "Computadores";
-$usuario= ["nome"=>"Luana"];
+$nomeSistema= "Cursos";
+$usuario= [];
+/*$usuario= ["nome"=>"Luana"] se está dessa forma, aparece o nome do usuário como cadastrado*/
+$produtos= [
+    ["nome"=>"FullStack", "preco"=>"R$ 1.200,00", "duracao"=>"5 meses"],
+    ["nome"=>"Marketing Digital", "preco"=>"R$ 1.000,00", "duracao"=>"4 meses"], /*se a array ta vazia fica tudo em branco, então o ideal seria colocar uma msg */
+];
+$categorias =["Cursos", "Palestras", "Artigos", "Produtos"];
 ?>
 
 <!DOCTYPE html>
@@ -44,34 +50,43 @@ $usuario= ["nome"=>"Luana"];
     </header>
 
     <main>
+
+    <div>
+        <nav class= "bg-dark">
+            <ul class= "nav d-flex justify-content-between p-3">
+
+            <?php foreach($categorias as $categoria){ ?>
+                <li class= "nav-item">
+                    <a class="nav-link text-white" href="#"><?php echo $categoria; ?></a>
+                </li>
+            <?php } ?>    
+                <!-- <li class= "nav-item">
+                    <a class="nav-link" href="#">Palestras</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">Artigos</a>
+                </li> -->
+            </ul>
+        </nav>
+    </div> 
+
         <section class="container mt-4">
             <div class="row justify-content-between">
-                    <div class="col-lg-3 card text-center">
-                        <h1>Super Computador</h1>
-                        <img src="imagem/pc1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-text">R$ 15.000</h5>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                    </div>
 
+            <?php if(isset($produtos) && $produtos != []){ ?>    
+            <?php foreach($produtos as $produto){ ?>
                     <div class="col-lg-3 card text-center">
-                        <h1>Super Computador</h1>
-                        <img src="imagem/pc1.jpg" class="card-img-top" alt="...">
+                        <h1><?php echo $produto['nome']; ?></h1>
+                        <img src="imagem/fullstack.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-text">R$ 15.000</h5>
+                                <h5 class="card-text"><?php echo $produto['preco']; ?></h5>
                                 <a href="#" class="btn btn-primary">Comprar</a>
                             </div>
                     </div>
-
-                    <div class="col-lg-3 card text-center">
-                        <h1>Super Computador</h1>
-                        <img src="imagem/pc1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-text">R$ 15.000</h5>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                    </div>
+            <?php } ?> <!--fechando o FOREACH-->
+            <?php } else { ?> <!--fechando o IF-->      
+                    <h1> Não tem produtos cadastrados nessa sessão ;( </h1>
+            <?php } ?> <!--fechando o ELSE-->       
             </div>
         </section>
     </main>

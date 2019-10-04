@@ -1,11 +1,7 @@
 <?php
 $nomeSistema= "Cursos";
-$usuario= [];
-/*$usuario= ["nome"=>"Luana"] se está dessa forma, aparece o nome do usuário como cadastrado*/
-$produtos= [
-    ["nome"=>"FullStack", "preco"=>"R$ 1.200,00", "duracao"=>"5 meses", "imagem"=>"imagem/fullstack.jpg"],
-    ["nome"=>"Marketing Digital", "preco"=>"R$ 1.000,00", "duracao"=>"4 meses", "imagem"=>"imagem/mkDigital.jpg"], /*se a array ta vazia fica tudo em branco, então o ideal seria colocar uma msg */
-];
+//$usuario= [];
+$usuario= ["nome"=>"Luana"]; /*se está dessa forma, aparece o nome do usuário como cadastrado*/
 $categorias =["Cursos", "Palestras", "Artigos", "Produtos"];
 ?>
 
@@ -50,7 +46,6 @@ $categorias =["Cursos", "Palestras", "Artigos", "Produtos"];
     </header>
 
     <main>
-
     <div>
         <nav class= "bg-dark">
             <ul class= "nav d-flex justify-content-between p-3">
@@ -70,25 +65,30 @@ $categorias =["Cursos", "Palestras", "Artigos", "Produtos"];
         </nav>
     </div> 
 
-        <section class="container mt-4">
-            <div class="row justify-content-between">
-
-            <?php if(isset($produtos) && $produtos != []){ ?>    
-            <?php foreach($produtos as $produto){ ?>
-                    <div class="col-lg-3 card text-center">
-                        <h1><?php echo $produto['nome']; ?></h1>
-                        <img src= "<?php echo $produto['imagem']; ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-text"><?php echo $produto['preco']; ?></h5>
-                                <a href="carrinho.php?nomeProduto=<?php echo $produto['nome']; ?>" class="btn btn-primary">Comprar</a>
-                            </div>
+    <section class="container">
+       <div class="row">
+            <div class="col-12">
+                <h1>Carrinho de compras</h1>
+            </div>    
+            <div class="col-12">
+                <div class="row card">
+                    <div class="col-12">
+                        <h3>Você está comprando o curso <?php echo $_GET['nomeProduto']; ?></h3>
                     </div>
-            <?php } ?> <!--fechando o FOREACH-->
-            <?php } else { ?> <!--fechando o IF-->      
-                    <h1> Não tem produtos cadastrados nessa sessão ;( </h1>
-            <?php } ?> <!--fechando o ELSE-->       
+                    <div class="col-lg-6 col-md-6">
+                        <form class= "d-flex flex-column p-3" method="post" action="sucesso.php">
+                            <input type="text" name="nomeCompleto" placeholder="Digite seu nome">
+                            <input type="text" name="cpf" placeholder="Digite seu CPF">
+                            <input type="number" name="cartao" id="Digite o número do cartão">
+                            <input type="date" name="validadecartao" placeholder="Digite a data de validade">
+                            <input type="password" name="codigoCartao" placeholder="Digite o CV">
+                            <button class="btn btn-success" type="submit">Finalizar Compra</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </section>
+       </div>         
+    </section>
     </main>
     
 </body>

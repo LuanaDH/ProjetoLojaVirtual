@@ -1,5 +1,5 @@
 
-<?php include_once("config/variaveis.php"); ?>
+<?php include_once("variaveis.php"); ?>
 
 <header class="d-flex justify-content-between align-items-center p-3">  <!--poderia substituir todas as utilites pela class navbar-->
 <div id="logo">

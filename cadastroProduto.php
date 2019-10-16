@@ -42,16 +42,18 @@
     }
 
     if($_POST){ 
-        //salvando arquivo
+        //salvando arquivo ... imgProduto = name do input
         $nomeImg= $_FILES['imgProduto']['name'];
         $localTmp= $_FILES['imgProduto']['tmp_name'];
-        $caminhoSalvo= 'imagem/'.$nomeImg;
+        $dataatual= date("d-m-y");//para colocar a data do dia/sistema na imagem
+        $caminhoSalvo= 'imagem/'.$dataatual.$nomeImg;//link de onde esta a imagem
 
         $deuCerto= move_uploaded_file($localTmp, $caminhoSalvo);
-        exit;
+        //exit;
 
         //colocar echo na frente pro meu usuário ver se deu certo
-        echo cadastrarProduto($_POST['nomeProduto'], $_POST['descProduto'], $_POST['imgProduto'], $_POST['precoProduto']);
+        //$_POST['imgProduto'] tirei de baixo e coloquei no lugar o $caminhosalvo
+        echo cadastrarProduto($_POST['nomeProduto'], $_POST['descProduto'], $caminhoSalvo, $_POST['precoProduto']);
     }
 
 ?>

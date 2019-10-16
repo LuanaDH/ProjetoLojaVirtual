@@ -1,6 +1,8 @@
 <?php
+session_start();
 $nomeSistema= "Cursos";
-$usuario= [];
+$usuario= isset($_SESSION['usuario'])? $_SESSION['usuario']: [];
+
 
 $nomeArquivo= "produto.json";
 //olhar na pagina cadastro outra forma de fazer, mais passo a passo

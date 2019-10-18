@@ -4,10 +4,11 @@ $nomeSistema= "Cursos";
 $usuario= isset($_SESSION['usuario'])? $_SESSION['usuario']: [];
 
 
-$nomeArquivo= "produto.json";
+$nomeArquivo= __DIR__."/../produto.json";
+
 //olhar na pagina cadastro outra forma de fazer, mais passo a passo
 $produtos= json_decode(file_get_contents($nomeArquivo), true);
-
+//echo $nomeArquivo;
 /*$usuario= ["nome"=>"Luana"] se está dessa forma, aparece o nome do usuário como cadastrado*/
 //$produtos= [
     //["nome"=>"FullStack", "preco"=>"R$ 1.200,00", "duracao"=>"5 meses", "imagem"=>"imagem/fullstack.jpg"],
